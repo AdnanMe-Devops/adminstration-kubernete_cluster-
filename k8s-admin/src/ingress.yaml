@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: k8s-perspectives.com
+    http:
+      paths:
+      - path: /news
+        backend:
+          serviceName: news
+          servicePort: 80
+      - path: /blog
+        backend:
+          serviceName: blog
+          servicePort: 80
